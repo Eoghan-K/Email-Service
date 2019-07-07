@@ -5,15 +5,15 @@ const keys = require('../config/keys');
 
 const User = mongoose.model('users');
 
-passport.serializeUser((user, done) =>{
-    done(null, user.id);
+passport.serializeUser(function (user, done) {
+    done (null, user.id);
 });
 
-passport.deserializeUser((id, done) =>{
+passport.deserializeUser(function (id, done) {
     User.findById(id)
-        .then(user => {
-            done(null, user);
-        })
+        .then (function (user) {
+            done (null, user);
+        });
 });
 
 passport.use(new GoogleStrategy({
